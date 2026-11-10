@@ -20,12 +20,14 @@ namespace Clase2
         // Creamos una propiedad que permite consultar el nivel del personaje.
         public int Level
         {
+            // Devolvemos el valor de la variable level.
             get { return level; }
         }
 
         // Creamos una propiedad que permite consultar la salud del personaje.
         public int Health
         {
+            // Devolvemos el valor de la variable health.
             get { return health; }
         }
 
