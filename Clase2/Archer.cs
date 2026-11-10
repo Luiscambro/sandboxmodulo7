@@ -3,52 +3,59 @@ using System;
 namespace Clase2
 {
     // HERENCIA:
-    // Archer hereda de Character. Por eso un arquero también tiene nombre,
-    // nivel, salud, ReceiveDamage() y Attack().
+    // Archer hereda de Character. Esto significa que el arquero
+    // también tiene nombre, nivel, salud y los métodos de la clase padre.
     public class Archer : Character
     {
-        // El constructor recibe los datos comunes del personaje y el dato
-        // específico del arquero: la cantidad inicial de flechas.
+        // Creamos el constructor que recibe el nombre, nivel, salud
+        // y la cantidad inicial de flechas del arquero.
         public Archer(string name, int level, int health, int arrows)
-            // base(...) llama al constructor de Character para inicializar
-            // name, level y health en la clase padre.
+
+            // Utilizamos base para enviar el nombre, nivel y salud
+            // al constructor de la clase padre Character.
             : base(name, level, health)
         {
+            // Guardamos la cantidad inicial de flechas del arquero.
             Arrows = arrows;
         }
 
         // ENCAPSULAMIENTO:
-        // Cualquier código puede consultar la cantidad de flechas mediante get,
-        // pero solamente Archer puede modificarla mediante private set.
+
+        // Utilizamos una propiedad para consultar la cantidad de flechas.
+        // get permite consultar su valor y private set permite modificarlo
+        // únicamente desde la clase Archer.
         public int Arrows { get; private set; }
 
-        // Este método representa una acción propia de Archer.
+        // Creamos un método llamado ShootArrow para que el arquero
+        // pueda disparar sus flechas.
         public void ShootArrow()
         {
-
-            //SI la cantidad de flechas es mayor que cero...
+            // Comprobamos si el arquero tiene más de cero flechas.
             if (Arrows > 0)
             {
-                // Cada disparo consume una flecha.
-                //Resta una flecha de la cantidad disponible.
+                // Si tiene flechas, restamos una de la cantidad disponible.
                 Arrows--;
+
+                // Mostramos en pantalla que el arquero dispara una flecha.
                 Console.WriteLine(name + " dispara una flecha!");
-                //Muestra en pantalla el nombre del personaje seguido del mensaje «dispara una flecha».
             }
-            //SI NO se cumple la condición anterior...
+
+            // Si no tiene flechas disponibles, ejecutamos esta condición.
             else
             {
-                // Esta validación evita que el arquero dispare si no tiene flechas.
+                // Mostramos un mensaje indicando que el arquero
+                // no tiene flechas para disparar.
                 Console.WriteLine(name + " no tiene flechas.");
-                //Muestra en pantalla que el personaje no tiene flechas.
             }
         }
 
         // POLIMORFISMO:
-        // Character tiene un método Attack(), pero Archer lo redefine para
-        // que atacar signifique disparar una flecha.
+        // Utilizamos override para modificar el comportamiento
+        // del método Attack() que heredamos de la clase Character.
         public override void Attack()
         {
+            // Cuando el arquero ataca, ejecutamos ShootArrow()
+            // para que dispare una flecha.
             ShootArrow();
         }
     }

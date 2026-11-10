@@ -2,26 +2,7 @@
 using Clase2;
 
 
-//Character character = new Warrior("Aragorn", 10, 100, 50);
 
-//character.name = "Juan";
-
-//Console.WriteLine("Character Name: " + character.name);
-//Console.WriteLine("Character Level: " + character.Level);
-//Console.WriteLine("Character Health: " + character.Health);
-//Console.WriteLine("Character has been attacked!" + character.ReceiveDamage(30) );
-//character.Attack();
-//(character as Warrior).SpecialAttack();
-
-//character.level = 5;
-//character.health = 100;
-
-//character.health -= 20; // Reduce health by 20
-
-
-// Creamos una lista de Character,de la clase padre.
-// Una lista del tipo padre puede almacenar objetos: Warrior, Wizard y Archer
-// porque esas clases se heredan de Character.
 List<Character> characters = new List<Character>();
 
 // Creamos una lista llamada characters para guardar nuestros personajes.
@@ -36,6 +17,9 @@ characters.Add(new Wizard("Gandalf", 20, 80, 200));
 // Legolas es un arquero de nivel 15, con 90 de salud y 3 flechas.
 characters.Add(new Archer("Legolas", 15, 90, 3));
 
+// Agregamos un personaje de tipo Monge a la lista.
+characters.Add(new Monge("Monge", 15, 100,300));
+
 // Utilizamos foreach para recorrer todos los personajes de la lista.
 foreach (Character character in characters)
 {
@@ -49,8 +33,8 @@ foreach (Character character in characters)
 
     // POLIMORFISMO:
     // Ejecutamos Attack() y cada personaje realiza un ataque diferente
-    // dependiendo de su clase: el guerrero golpea, el mago usa magia
-    // y el arquero dispara una flecha.
+    // dependiendo de su clase: el guerrero golpea, el mago usa magia,
+    // el arquero dispara una flecha y el monje invoca un golem.
     character.Attack();
 
     // Comprobamos si el personaje actual es un guerrero.
@@ -87,6 +71,20 @@ foreach (Character character in characters)
 
         // Mostramos la cantidad de flechas que tiene disponibles.
         Console.WriteLine("Archer Arrows: " + archer.Arrows);
+    }
+
+    // Si no es un arquero, comprobamos si es un monge.
+    else if (character is Monge monge)
+    {
+        // Ejecutamos el método SummonGolem() para invocar un golem.
+        monge.SummonGolem();
+
+        // Probamos la sobrecarga que recibe un coste de maná.
+        monge.SummonGolem(20);
+
+        // Mostramos el maná disponible del monje.
+        Console.WriteLine("Monge Mana: " + monge.Mana);
+        Console.WriteLine("Monge Health: " + monge.Health);
     }
 
     // Dejamos una línea en blanco para separar los resultados
