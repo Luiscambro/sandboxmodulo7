@@ -30,7 +30,13 @@ namespace Clase3.Views
         /// <param name="libros"></param>
         public void MostrarLibrosDisponibles(List<Models.LibroModels> libros)
         {
-            Console.WriteLine("=== Libros Disponibles ===");
+            // TAREA: la View únicamente presenta los datos y los mensajes al usuario.
+            Console.WriteLine("=== Estado de los libros ===");
+            if (libros.Count == 0)
+            {
+                Console.WriteLine("No hay libros registrados.");
+                return;
+            }
             foreach (var libro in libros)
             {
                 string disponibilidad = libro.Disponible ? "Disponible" : "No disponible";
@@ -56,6 +62,19 @@ namespace Clase3.Views
         public string SolicitarTituloLibro()
         {
             Console.Write("Ingrese el título del libro: ");
+            return Console.ReadLine() ?? string.Empty;
+        }
+
+        // TAREA: estos métodos pertenecen a la View porque se encargan de leer
+        // la información que el usuario escribe en la consola.
+        public string SolicitarOpcion()
+        {
+            return Console.ReadLine() ?? string.Empty;
+        }
+
+        public string SolicitarAutorLibro()
+        {
+            Console.Write("Ingrese el autor del libro: ");
             return Console.ReadLine() ?? string.Empty;
         }
     }

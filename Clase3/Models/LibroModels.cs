@@ -44,6 +44,8 @@ namespace Clase3.Models
         /// </summary>
         public bool Prestar()
         {
+            // TAREA: regla de negocio del Model. Un libro ya prestado no cambia
+            // de estado y devuelve false para que el Controller avise al usuario.
             if (!Disponible)
             {
                 return false;
@@ -58,6 +60,8 @@ namespace Clase3.Models
         /// </summary>
         public bool Devolver()
         {
+            // TAREA: regla de negocio del Model. Un libro disponible no puede
+            // devolverse otra vez y devuelve false para indicar la operación inválida.
             if (Disponible)
             {
                 return false;
