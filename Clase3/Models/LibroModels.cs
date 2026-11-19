@@ -7,7 +7,7 @@ namespace Clase3.Models
     /// <summary>
     /// modelo que representa un libro en la biblioteca.
     /// </summary>
-    public class Libro
+    public class LibroModels
     {
         //Seccion de las propiedades de la clase libro
         public string Titulo { get; set; }
@@ -19,7 +19,7 @@ namespace Clase3.Models
         /// </summary>
         /// <param name="titulo"></param>
         /// <param name="autor"></param>
-        public Libro(string titulo, string autor)
+        public LibroModels(string titulo, string autor)
         {
             Titulo = titulo;
             Autor = autor;
@@ -32,7 +32,7 @@ namespace Clase3.Models
         /// <param name="titulo"></param>
         /// <param name="autor"></param>
         /// <param name="disponible"></param>
-        public Libro(string titulo, string autor, bool disponible)
+        public LibroModels(string titulo, string autor, bool disponible)
         {
             Titulo = titulo;
             Autor = autor;
@@ -42,35 +42,30 @@ namespace Clase3.Models
         /// <summary>
         /// Marca el libro como prestado si está disponible y muestra un mensaje en la consola.
         /// </summary>
-        public void Prestar()
+        public bool Prestar()
         {
-            if (Disponible)
+            if (!Disponible)
             {
-                Disponible = false;
-                Console.WriteLine($"El libro '{Titulo}' ha sido prestado.");
+                return false;
             }
-            else
-            {
-                Console.WriteLine($"El libro '{Titulo}' no está disponible para préstamo.");
-            }
+
+            Disponible = false;
+            return true;
         }
 
         /// <summary>
         /// Marca el libro como devuelto y muestra un mensaje en la consola.
         /// </summary>
-        public void Devolver()
+        public bool Devolver()
         {
-            if (!Disponible)
+            if (Disponible)
             {
-                Disponible = true;
-                Console.WriteLine($"El libro '{Titulo}' ha sido devuelto.");
+                return false;
             }
-            else
-            {
-                Console.WriteLine($"El libro '{Titulo}' ya está disponible.");
-            }
-        }
 
+            Disponible = true;
+            return true;
+        }
 
 
     }

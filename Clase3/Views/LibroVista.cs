@@ -28,7 +28,7 @@ namespace Clase3.Views
         /// Muestra la lista de libros disponibles en la biblioteca.
         /// </summary>
         /// <param name="libros"></param>
-        public void MostrarLibrosDisponibles(List<Models.Libro> libros)
+        public void MostrarLibrosDisponibles(List<Models.LibroModels> libros)
         {
             Console.WriteLine("=== Libros Disponibles ===");
             foreach (var libro in libros)
@@ -47,6 +47,16 @@ namespace Clase3.Views
         public void MostrarMensaje(string mensaje)
         {
             Console.WriteLine(mensaje);
+        }
+
+        /// <summary>
+        /// metodo para solicitar el libro por titulo
+        /// </summary>
+        /// <returns></returns>
+        public string SolicitarTituloLibro()
+        {
+            Console.Write("Ingrese el título del libro: ");
+            return Console.ReadLine() ?? string.Empty;
         }
     }
 }
